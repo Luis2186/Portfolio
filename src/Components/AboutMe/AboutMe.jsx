@@ -2,6 +2,7 @@ import usuario from "../../Data/dataUsuario";
 import LayoutAside from "../General/LayoutAside/LayoutAside";
 import HeaderTitulo from "../General/HeaderTitulo";
 import PersonalInfo from "./PersonalInfo";
+import Services from "./Services";
 
 function AboutMe({ layoutVisible }) {
   return (
@@ -18,6 +19,8 @@ function AboutMe({ layoutVisible }) {
           />
 
           <PersonalInfo user={usuario} />
+
+          <Services />
         </section>
       </main>
     </>
