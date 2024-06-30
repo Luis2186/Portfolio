@@ -4,16 +4,14 @@ import { useState } from "react";
 import LayoutMenuToogle from "./General/LayoutAside/LayoutMenuToogle";
 import LayoutContent from "./General/LayoutAside/LayoutContent";
 
-function Home() {
-  const [layoutVisible, setLayoutVisible] = useState(false);
-
+function Home({ layoutVisible }) {
   const onLayoutVisible = () => {
     setLayoutVisible(!layoutVisible);
   };
 
   return (
     // <!-- Layaout Principal -->
-    <div className="layout">
+    <>
       {/* <!-- Barra Lateral(Info usuario) --> */}
       <LayoutAside user={usuario} layoutVisible={layoutVisible} />
 
@@ -25,7 +23,7 @@ function Home() {
 
       {/* <!-- Contenido Principal --> */}
       <LayoutContent user={usuario} layoutVisible={layoutVisible} />
-    </div>
+    </>
   );
 }
 

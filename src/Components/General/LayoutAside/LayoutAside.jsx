@@ -7,7 +7,7 @@ import UserInfoFooter from "./UserInfoFooter";
 
 function LayoutAside({ user, layoutVisible }) {
   const { name, job } = user;
-  console.log(layoutVisible);
+
   return (
     <aside
       className={

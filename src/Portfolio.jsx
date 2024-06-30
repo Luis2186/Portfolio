@@ -1,13 +1,17 @@
 import { useState } from "react";
 import Blog from "./Components/Blog";
 import Home from "./Components/Home";
+import AboutMe from "./Components/AboutMe/AboutMe";
 
 function Portfolio() {
-  const [count, setCount] = useState(0);
+  const [layoutVisible, setLayoutVisible] = useState(false);
 
   return (
     <>
-      <Home />
+      <div className="layout">
+        {/* <Home layoutVisible={layoutVisible} /> */}
+        <AboutMe layoutVisible={layoutVisible} />
+      </div>
       {/* <Blog /> */}
     </>
   );
