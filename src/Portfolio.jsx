@@ -2,6 +2,8 @@ import { useState } from "react";
 import Blog from "./Components/Blog";
 import Home from "./Components/Home";
 import AboutMe from "./Components/AboutMe/AboutMe";
+import Hobbies from "./Components/Hobbies/Hobbies";
+import usuario from "./Data/dataUsuario";
 
 function Portfolio() {
   const [layoutVisible, setLayoutVisible] = useState(false);
@@ -9,8 +11,9 @@ function Portfolio() {
   return (
     <>
       <div className="layout">
-        {/* <Home layoutVisible={layoutVisible} /> */}
-        <AboutMe layoutVisible={layoutVisible} />
+        {/* <Home user={usuario} layoutVisible={layoutVisible} /> */}
+        {/* <AboutMe user={usuario} layoutVisible={layoutVisible} /> */}
+        <Hobbies layoutVisible={layoutVisible} user={usuario} />
       </div>
       {/* <Blog /> */}
     </>

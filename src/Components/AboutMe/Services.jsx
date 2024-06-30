@@ -15,6 +15,7 @@ function Services() {
       <div className="services__container">
         {dataServices.map((service) => (
           <Service
+            key={service.id}
             icon={<i className={service.iconClassName}></i>}
             title={service.title}
             description={service.description}

@@ -1,13 +1,12 @@
-import usuario from "../../Data/dataUsuario";
 import LayoutAside from "../General/LayoutAside/LayoutAside";
 import HeaderTitulo from "../General/HeaderTitulo";
 import PersonalInfo from "./PersonalInfo";
 import Services from "./Services";
 
-function AboutMe({ layoutVisible }) {
+function AboutMe({ user, layoutVisible }) {
   return (
     <>
-      <LayoutAside user={usuario} layoutVisible={layoutVisible} />
+      <LayoutAside user={user} layoutVisible={layoutVisible} />
       <main className="layout__content">
         <section className="content__page content__about">
           <HeaderTitulo
@@ -18,7 +17,7 @@ function AboutMe({ layoutVisible }) {
             }
           />
 
-          <PersonalInfo user={usuario} />
+          <PersonalInfo user={user} />
 
           <Services />
         </section>

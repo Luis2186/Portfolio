@@ -1,10 +1,9 @@
 import LayoutAside from "./General/LayoutAside/LayoutAside";
-import usuario from "../Data/dataUsuario";
 import { useState } from "react";
 import LayoutMenuToogle from "./General/LayoutAside/LayoutMenuToogle";
 import LayoutContent from "./General/LayoutAside/LayoutContent";
 
-function Home({ layoutVisible }) {
+function Home({ user, layoutVisible }) {
   const onLayoutVisible = () => {
     setLayoutVisible(!layoutVisible);
   };
@@ -13,7 +12,7 @@ function Home({ layoutVisible }) {
     // <!-- Layaout Principal -->
     <>
       {/* <!-- Barra Lateral(Info usuario) --> */}
-      <LayoutAside user={usuario} layoutVisible={layoutVisible} />
+      <LayoutAside user={user} layoutVisible={layoutVisible} />
 
       {/* <!-- Menu responsive --> */}
       <LayoutMenuToogle
@@ -22,7 +21,7 @@ function Home({ layoutVisible }) {
       />
 
       {/* <!-- Contenido Principal --> */}
-      <LayoutContent user={usuario} layoutVisible={layoutVisible} />
+      <LayoutContent user={user} layoutVisible={layoutVisible} />
     </>
   );
 }
