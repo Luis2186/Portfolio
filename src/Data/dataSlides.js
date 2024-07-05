@@ -1,3 +1,5 @@
+import imagen from "https://github.com/Luis2186/Portfolio/blob/82407760a7573fbc9b83aa2f3149735e7fd9b800/src/assets/img/Perfil.jpg";
+
 export const dataSlides = [
   {
     id: 1,
@@ -28,8 +30,8 @@ export const dataSlides = [
     urlImg:
       "https://images.pexels.com/photos/1280553/pexels-photo-1280553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
-  //   {
-  //     id: 7,
-  //     urlImg: "./img/Perfil.jpg",
-  //   },
+  {
+    id: 7,
+    urlImg: "img/Perfil.jpg",
+  },
 ];
