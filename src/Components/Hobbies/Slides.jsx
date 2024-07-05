@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { dataSlides } from "../../Data/dataSlides";
 import Slide from "./Slide";
 
-function Slides() {
+function Slides({ dataSlides }) {
   useEffect(() => {
     let next = document.querySelector(".next");
     let prev = document.querySelector(".prev");
@@ -19,7 +18,7 @@ function Slides() {
         .prepend(items[items.length - 1]);
     });
   }, []);
-
+  console.log(dataSlides);
   const slidesCopy = [...dataSlides];
 
   return (

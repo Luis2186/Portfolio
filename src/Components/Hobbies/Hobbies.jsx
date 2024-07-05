@@ -1,8 +1,21 @@
 import LayoutAside from "../General/LayoutAside/LayoutAside";
 import HeaderTitulo from "../General/HeaderTitulo";
 import Slides from "./Slides";
+import IconosCategories from "./IconosCategories";
+import { useEffect, useState } from "react";
+import { dataSlides } from "../../Data/dataSlides";
 
 export default function Hobbies({ user, layoutVisible }) {
+  const [categoriePhoto, setCategoriePhoto] = useState("trips");
+  const [photoCategorie, setPhotoCategorie] = useState([]);
+
+  useEffect(() => {
+    const photosForCategory = [...dataSlides].filter(
+      (photo) => photo.category == categoriePhoto
+    );
+    setPhotoCategorie(photosForCategory);
+  }, [categoriePhoto]);
+
   return (
     <>
       <LayoutAside user={user} layoutVisible={layoutVisible} />
@@ -11,7 +24,9 @@ export default function Hobbies({ user, layoutVisible }) {
         <HeaderTitulo title={"Fotografia"} />
 
         <div className="hobbies__container">
-          <Slides />
+          <IconosCategories setcategoriePhoto={setCategoriePhoto} />
+
+          <Slides dataSlides={photoCategorie} />
         </div>
       </section>
     </>
