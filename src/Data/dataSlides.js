@@ -1,37 +1,92 @@
-import imagen from "https://github.com/Luis2186/Portfolio/blob/82407760a7573fbc9b83aa2f3149735e7fd9b800/src/assets/img/Perfil.jpg";
-
 export const dataSlides = [
   {
     id: 1,
-    urlImg:
-      "https://images.unsplash.com/photo-1610809376778-928ee2c3a561?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0129.jpg",
   },
   {
     id: 2,
-    urlImg:
-      "https://images.unsplash.com/photo-1625179904634-243c6cdd6421?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0135.jpg",
   },
   {
     id: 3,
-    urlImg:
-      "https://images.unsplash.com/photo-1597935370784-051cdebbe6a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0182.jpg",
   },
   {
     id: 4,
-    urlImg:
-      "https://images.unsplash.com/photo-1453491945771-a1e904948959?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0199.jpg",
   },
   {
     id: 5,
-    urlImg: "https://images2.alphacoders.com/724/724677.jpg",
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0243.jpg",
   },
   {
     id: 6,
-    urlImg:
-      "https://images.pexels.com/photos/1280553/pexels-photo-1280553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0382.jpg",
   },
   {
     id: 7,
-    urlImg: "img/Perfil.jpg",
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0522.jpg",
+  },
+  {
+    id: 8,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0535.jpg",
+  },
+  {
+    id: 9,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0562.jpg",
+  },
+  {
+    id: 10,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0579.jpg",
+  },
+  {
+    id: 11,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0584.jpg",
+  },
+  {
+    id: 12,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0607.jpg",
+  },
+  {
+    id: 13,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0632.jpg",
+  },
+  {
+    id: 14,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0677.jpg",
+  },
+  {
+    id: 15,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0685.jpg",
+  },
+  {
+    id: 16,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0705.jpg",
+  },
+  {
+    id: 17,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0718.jpg",
+  },
+  {
+    id: 18,
+    category: "",
+    urlImg: "./src/assets/img/fotografia/DSC_0726.jpg",
   },
 ];

@@ -4,8 +4,8 @@ function Slide({ urlImg }) {
       className="item"
       style={{
         backgroundImage: `url(${urlImg})`,
-        // backgroundSize: "cover",
-        // backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       {/* <div className="content">
