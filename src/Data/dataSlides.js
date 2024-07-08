@@ -179,4 +179,24 @@ export const dataSlides = [
     category: "trips",
     urlImg: "./src/assets/img/fotografia/trips/IMG-20180115-WA0033.jpg",
   },
+  {
+    id: 37,
+    category: "animals",
+    urlImg: "./src/assets/img/fotografia/animals/DSC_0894.jpg",
+  },
+  {
+    id: 38,
+    category: "animals",
+    urlImg: "./src/assets/img/fotografia/animals/DSC_0923-2.jpg",
+  },
+  {
+    id: 39,
+    category: "animals",
+    urlImg: "./src/assets/img/fotografia/animals/DSC_0933.jpg",
+  },
+  {
+    id: 40,
+    category: "animals",
+    urlImg: "./src/assets/img/fotografia/animals/Zaty_11.jpg",
+  },
 ];

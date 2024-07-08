@@ -19,16 +19,25 @@ export default function Hobbies({ user, layoutVisible }) {
   return (
     <>
       <LayoutAside user={user} layoutVisible={layoutVisible} />
+      <main className="layout__content">
+        <section className="content__page content__hobbies">
+          <HeaderTitulo title={"Fotografia"} />
+          <article className="hobbies__hobbie">
+            <div className="hobbie__content">
+              <p className="hobbie__description">
+                {
+                  "La fotografía es una de mis pasiones. Disfruto capturando momentos y explorando diferentes técnicas para expresar mi creatividad. Este hobby me permite desconectar y encontrar inspiración, aplicando la atención al detalle y la composición tanto en mis fotos como en mi trabajo de desarrollo de software."
+                }
+              </p>
+            </div>
+          </article>
+          <div className="hobbies__container">
+            <IconosCategories setcategoriePhoto={setCategoriePhoto} />
 
-      <section className="content__page content__about">
-        <HeaderTitulo title={"Fotografia"} />
-
-        <div className="hobbies__container">
-          <IconosCategories setcategoriePhoto={setCategoriePhoto} />
-
-          <Slides dataSlides={photoCategorie} />
-        </div>
-      </section>
+            <Slides dataSlides={photoCategorie} />
+          </div>
+        </section>
+      </main>
     </>
   );
 }
