@@ -1,6 +1,6 @@
 function IconosCategories({ setcategoriePhoto }) {
   return (
-    <>
+    <div className="container__iconos">
       <button
         type="button"
         className="container__icono"
@@ -21,7 +21,7 @@ function IconosCategories({ setcategoriePhoto }) {
       >
         <i className="fa-solid fa-paw fa-2xl icono"></i>
       </button>
-    </>
+    </div>
   );
 }
 

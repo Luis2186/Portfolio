@@ -4,6 +4,7 @@ import Slides from "./Slides";
 import IconosCategories from "./IconosCategories";
 import { useEffect, useState } from "react";
 import { dataSlides } from "../../Data/dataSlides";
+import SliderApp from "./SliderApp";
 
 export default function Hobbies({ user, layoutVisible }) {
   const [categoriePhoto, setCategoriePhoto] = useState("trips");
@@ -31,11 +32,11 @@ export default function Hobbies({ user, layoutVisible }) {
               </p>
             </div>
           </article>
-          <div className="hobbies__container">
-            <IconosCategories setcategoriePhoto={setCategoriePhoto} />
 
-            <Slides dataSlides={photoCategorie} />
-          </div>
+          <IconosCategories setcategoriePhoto={setCategoriePhoto} />
+
+          <SliderApp dataSlides={photoCategorie} category={categoriePhoto} />
+          {/* <Slides dataSlides={photoCategorie} /> */}
         </section>
       </main>
     </>
