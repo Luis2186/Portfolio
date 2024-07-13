@@ -18,7 +18,6 @@ export default function Hobbies({ user, layoutVisible }) {
 
   return (
     <>
-      <LayoutAside user={user} layoutVisible={layoutVisible} />
       <main className="layout__content">
         <section className="content__page content__hobbies">
           <HeaderTitulo title={"Fotografia"} />

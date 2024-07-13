@@ -10,9 +10,6 @@ function Home({ user, layoutVisible }) {
   return (
     // <!-- Layaout Principal -->
     <>
-      {/* <!-- Barra Lateral(Info usuario) --> */}
-      <LayoutAside user={user} layoutVisible={layoutVisible} />
-
       {/* <!-- Menu responsive --> */}
       <LayoutMenuToogle
         onLayoutVisible={onLayoutVisible}
