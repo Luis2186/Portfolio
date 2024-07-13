@@ -1,5 +1,3 @@
-import React from "react";
-
 function UserInfoButton() {
   return (
     <div className="user-info__buttons">

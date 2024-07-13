@@ -1,10 +1,9 @@
-import LayoutAside from "../General/LayoutAside/LayoutAside";
-import HeaderTitulo from "../General/HeaderTitulo";
-import Slides from "./Slides";
-import IconosCategories from "./IconosCategories";
+import LayoutAside from "../../General/LayoutAside/pages/LayoutAside";
+import HeaderTitulo from "../../General/HeaderTitulo";
+import IconosCategories from "../components/IconosCategories";
 import { useEffect, useState } from "react";
-import { dataSlides } from "../../Data/dataSlides";
-import SliderApp from "./SliderApp";
+import { dataSlides } from "../data/dataSlides";
+import SliderApp from "../components/SliderApp";
 
 export default function Hobbies({ user, layoutVisible }) {
   const [categoriePhoto, setCategoriePhoto] = useState("trips");

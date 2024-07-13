@@ -1,5 +1,5 @@
 import MenuOption from "./MenuOption";
-import { menuItems } from "../../../Data/dataMenuItems";
+import { menuItems } from "../data/dataMenuItems";
 
 function LayoutMenu() {
   return (

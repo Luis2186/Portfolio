@@ -1,7 +1,6 @@
-import LayoutAside from "./General/LayoutAside/LayoutAside";
-import { useState } from "react";
-import LayoutMenuToogle from "./General/LayoutAside/LayoutMenuToogle";
-import LayoutContent from "./General/LayoutAside/LayoutContent";
+import LayoutAside from "../../General/LayoutAside/pages/LayoutAside";
+import LayoutMenuToogle from "../components/LayoutMenuToogle";
+import LayoutContent from "../components/LayoutContent";
 
 function Home({ user, layoutVisible }) {
   const onLayoutVisible = () => {

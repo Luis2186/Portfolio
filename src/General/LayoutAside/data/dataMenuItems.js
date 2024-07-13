@@ -1,13 +1,13 @@
 export const menuItems = [
   {
     id: 1,
-    dirHref: "index.html",
+    dirHref: "/home",
     description: "Home",
     iconoClassName: "fa-solid fa-house menu__icon",
   },
   {
     id: 2,
-    dirHref: "sobre-mi.html",
+    dirHref: "/aboutMe",
     description: "Sobre mi",
     iconoClassName: "fa-solid fa-user menu__icon",
   },
@@ -25,9 +25,9 @@ export const menuItems = [
   },
   {
     id: 5,
-    dirHref: "blog.html",
-    description: "Blog",
-    iconoClassName: "fa-solid fa-book menu__icon",
+    dirHref: "/hobbies",
+    description: "Hobbies",
+    iconoClassName: "fa-solid fa-images menu__icon",
   },
   {
     id: 6,

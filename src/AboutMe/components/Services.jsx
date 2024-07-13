@@ -1,6 +1,6 @@
-import HeaderSubtitle from "../General/HeaderSubtitle";
+import HeaderSubtitle from "../../General/HeaderSubtitle";
 import Service from "./Service";
-import { dataServices } from "../../Data/dataServices";
+import { dataServices } from "../data/dataServices";
 
 function Services() {
   return (

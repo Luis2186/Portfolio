@@ -1,9 +1,9 @@
-import LayoutMenu from "./LayoutMenu";
-import perfil from "../../../assets/img/Perfil.jpg";
-import UserInfoLinks from "./UserInfoLinks";
-import { UserInfo } from "./UserInfo";
-import UserInfoButton from "./UserInfoButton";
-import UserInfoFooter from "./UserInfoFooter";
+import LayoutMenu from "../components/LayoutMenu";
+import perfil from "../../../../assets/img/Perfil.jpg";
+import UserInfoLinks from "../components/UserInfoLinks";
+import { UserInfo } from "../components/UserInfo";
+import UserInfoButton from "../components/UserInfoButton";
+import UserInfoFooter from "../components/UserInfoFooter";
 
 function LayoutAside({ user, layoutVisible }) {
   const { name, job } = user;
