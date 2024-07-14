@@ -10,12 +10,6 @@ function Home({ user, layoutVisible }) {
   return (
     // <!-- Layaout Principal -->
     <>
-      {/* <!-- Menu responsive --> */}
-      <LayoutMenuToogle
-        onLayoutVisible={onLayoutVisible}
-        layoutVisible={layoutVisible}
-      />
-
       {/* <!-- Contenido Principal --> */}
       <LayoutContent user={user} layoutVisible={layoutVisible} />
     </>

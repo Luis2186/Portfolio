@@ -13,7 +13,7 @@ export const menuItems = [
   },
   {
     id: 3,
-    dirHref: "curriculum.html",
+    dirHref: "/curriculum",
     description: "Curriculum",
     iconoClassName: "fa-solid fa-graduation-cap menu__icon",
   },

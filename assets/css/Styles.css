@@ -1521,6 +1521,7 @@ body{
     height: 35rem;
     border-radius: 2rem;
     object-fit: contain; 
+    padding: 0rem 4rem;
   }
   
   .swiper-slide-shadow-left,

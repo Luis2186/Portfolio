@@ -22,7 +22,7 @@ function LayoutAside({ user, layoutVisible }) {
         <LayoutMenu />
 
         {/* <!-- Links a redes sociales --> */}
-        <UserInfoLinks />
+        <UserInfoLinks user={user} />
 
         {/* <!-- Boton del curriculum --> */}
         <UserInfoButton />

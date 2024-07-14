@@ -1,4 +1,4 @@
-import HeaderSubtitle from "../../General/HeaderSubtitle";
+import { HeaderSubtitle } from "../../General";
 import Service from "./Service";
 import { dataServices } from "../data/dataServices";
 

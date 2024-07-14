@@ -15,6 +15,8 @@ const usuario = {
   mail: "l.lopezperdomo.e@gmail.com",
   phone: "099798465",
   submission: desarrolloPresentacion,
+  urlLinkedin: "https://www.linkedin.com/in/luis-lopez-perdomo/",
+  urlInstagram: "https://www.instagram.com/lucho_2186",
 };
 
 export default usuario;

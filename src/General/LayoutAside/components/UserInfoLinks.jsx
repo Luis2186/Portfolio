@@ -1,6 +1,6 @@
 import SocialLink from "./SocialLink";
 
-function UserInfoLinks() {
+function UserInfoLinks({ user }) {
   return (
     <div className="user-info__links">
       <ul className="links__social">
@@ -9,11 +9,11 @@ function UserInfoLinks() {
           socialIconClass={"fa-brands fa-youtube social__icon"}
         />
         <SocialLink
-          href={"#"}
+          href={user.urlLinkedin}
           socialIconClass={"fa-brands fa-linkedin social__icon"}
         />
         <SocialLink
-          href={"#"}
+          href={user.urlInstagram}
           socialIconClass={"fa-brands fa-instagram social__icon"}
         />
       </ul>
