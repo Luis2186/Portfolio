@@ -3,7 +3,7 @@ import { HeaderTitulo } from "../../General";
 import PersonalInfo from "../components/PersonalInfo";
 import Services from "../components/Services";
 
-function AboutMe({ user, layoutVisible }) {
+function AboutMe({ user }) {
   return (
     <>
       <section className="content__page content__about">

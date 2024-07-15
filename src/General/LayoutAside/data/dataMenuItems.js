@@ -31,7 +31,7 @@ export const menuItems = [
   },
   {
     id: 6,
-    dirHref: "contacto.html",
+    dirHref: "/contact",
     description: "Contacto",
     iconoClassName: "fa-solid fa-envelope menu__icon",
   },

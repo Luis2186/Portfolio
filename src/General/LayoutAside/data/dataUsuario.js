@@ -13,7 +13,7 @@ const usuario = {
   adress: "Becu M42S28",
   city: "Lagomar",
   mail: "l.lopezperdomo.e@gmail.com",
-  phone: "099798465",
+  phone: "099 798 465",
   submission: desarrolloPresentacion,
   urlLinkedin: "https://www.linkedin.com/in/luis-lopez-perdomo/",
   urlInstagram: "https://www.instagram.com/lucho_2186",

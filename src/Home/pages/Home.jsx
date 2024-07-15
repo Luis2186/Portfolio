@@ -1,17 +1,11 @@
-import LayoutAside from "../../General/LayoutAside/pages/LayoutAside";
-import LayoutMenuToogle from "../components/LayoutMenuToogle";
 import LayoutContent from "../components/LayoutContent";
 
-function Home({ user, layoutVisible }) {
-  const onLayoutVisible = () => {
-    setLayoutVisible(!layoutVisible);
-  };
-
+function Home({ user }) {
   return (
     // <!-- Layaout Principal -->
     <>
       {/* <!-- Contenido Principal --> */}
-      <LayoutContent user={user} layoutVisible={layoutVisible} />
+      <LayoutContent user={user} />
     </>
   );
 }
