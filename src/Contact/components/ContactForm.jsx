@@ -1,6 +1,44 @@
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+
+const serviceId = "service_8vv0ubl";
+const templateId = "template_9v8p3dp";
+const userKey = "DPfew0PvvuApuWN9v";
 export const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.send(serviceId, templateId, formData, userKey).then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        // Aquí puedes mostrar un mensaje de éxito al usuario
+      },
+      (err) => {
+        console.log("FAILED...", err);
+        // Aquí puedes mostrar un mensaje de error al usuario
+      }
+    );
+
+    // Opcional: Limpiar el formulario
+    setFormData({ name: "", subject: "", message: "" });
+  };
+
   return (
-    <form action="" className="contact__form">
+    <form action="" className="contact__form" onSubmit={handleSubmit}>
       <div className="form__container">
         <section className="form__left">
           <div className="form__group">
@@ -8,6 +46,8 @@ export const ContactForm = () => {
               type="text"
               className="form__input"
               name="name"
+              value={formData.name}
+              onChange={handleChange}
               required
               placeholder="Nombre"
             />
@@ -32,6 +72,8 @@ export const ContactForm = () => {
               type="text"
               className="form__input"
               name="subject"
+              value={formData.subject}
+              onChange={handleChange}
               required
               placeholder="Asunto"
             />
@@ -46,6 +88,8 @@ export const ContactForm = () => {
             <textarea
               className="form__input form__input--textarea"
               name="message"
+              value={formData.message}
+              onChange={handleChange}
               required
               placeholder="Mensaje"
             ></textarea>
