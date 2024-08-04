@@ -1,9 +1,15 @@
+import { useSelector } from "react-redux";
 import PersonalInfoBio from "./PersonalInfoBio";
 import PersonalInfoOption from "./PersonalInfoOption";
 
-function PersonalInfo({ user }) {
+function PersonalInfo() {
+  const userData = useSelector((state) => state.data);
+
+  const { email, cellPhone, dateOfBirth, presentation, location } = userData;
+  const locationUser = location[0];
+
   const calcularEdad = (fechaDeNacimiento) => {
-    const [day, month, year] = fechaDeNacimiento.split("/");
+    const [year, month, day] = fechaDeNacimiento.split("-");
     const dateOfBorn = new Date(year, month - 1, day);
     const currentDate = new Date();
     const edad = currentDate.getFullYear() - dateOfBorn.getFullYear();
@@ -12,22 +18,28 @@ function PersonalInfo({ user }) {
 
   return (
     <section className="about__personal-info">
-      <PersonalInfoBio bioDescription={user.submission} />
+      <PersonalInfoBio bioDescription={presentation} />
 
       <div className="personal-info__data">
         <ul className="personal-info__list">
           <PersonalInfoOption
             title={"Edad"}
-            description={calcularEdad(user.dateOfBirth)}
+            description={calcularEdad(dateOfBirth)}
           />
 
-          <PersonalInfoOption title={"Pais"} description={user.country} />
+          <PersonalInfoOption
+            title={"Pais"}
+            description={locationUser.country}
+          />
 
-          <PersonalInfoOption title={"Direccion"} description={user.adress} />
+          <PersonalInfoOption
+            title={"Direccion"}
+            description={locationUser.adress}
+          />
 
-          <PersonalInfoOption title={"Correo"} description={user.mail} />
+          <PersonalInfoOption title={"Correo"} description={email} />
 
-          <PersonalInfoOption title={"Telefono"} description={user.phone} />
+          <PersonalInfoOption title={"Telefono"} description={cellPhone} />
         </ul>
       </div>
     </section>

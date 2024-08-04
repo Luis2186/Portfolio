@@ -1,21 +1,20 @@
+import { useSelector } from "react-redux";
 import SocialLink from "./SocialLink";
 
-function UserInfoLinks({ user }) {
+function UserInfoLinks() {
+  const dataUser = useSelector((state) => state.data);
+  const { digitalPlataforms } = dataUser;
+
   return (
     <div className="user-info__links">
       <ul className="links__social">
-        <SocialLink
-          href={"#"}
-          socialIconClass={"fa-brands fa-youtube social__icon"}
-        />
-        <SocialLink
-          href={user.urlLinkedin}
-          socialIconClass={"fa-brands fa-linkedin social__icon"}
-        />
-        <SocialLink
-          href={user.urlInstagram}
-          socialIconClass={"fa-brands fa-instagram social__icon"}
-        />
+        {digitalPlataforms.map((dp) => (
+          <SocialLink
+            key={dp.id}
+            href={dp.url}
+            socialIconClass={dp.iconClassName}
+          />
+        ))}
       </ul>
     </div>
   );

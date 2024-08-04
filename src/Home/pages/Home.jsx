@@ -1,11 +1,11 @@
 import LayoutContent from "../components/LayoutContent";
 
-function Home({ user }) {
+function Home() {
   return (
     // <!-- Layaout Principal -->
     <>
       {/* <!-- Contenido Principal --> */}
-      <LayoutContent user={user} />
+      <LayoutContent />
     </>
   );
 }

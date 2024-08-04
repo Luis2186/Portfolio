@@ -1,9 +1,8 @@
-import LayoutAside from "../../General/LayoutAside/pages/LayoutAside";
 import { HeaderTitulo } from "../../General";
 import PersonalInfo from "../components/PersonalInfo";
 import Services from "../components/Services";
 
-function AboutMe({ user }) {
+function AboutMe() {
   return (
     <>
       <section className="content__page content__about">
@@ -15,7 +14,7 @@ function AboutMe({ user }) {
           }
         />
 
-        <PersonalInfo user={user} />
+        <PersonalInfo />
 
         <Services />
       </section>

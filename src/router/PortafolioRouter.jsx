@@ -21,11 +21,11 @@ export const PortafolioRouter = () => {
       <LayoutAside user={usuario} layoutVisible={layoutVisible} />
       <main className="layout__content">
         <Routes>
-          <Route path="/aboutMe" element={<AboutMe user={usuario} />}></Route>
-          <Route path="/home" element={<Home user={usuario} />}></Route>
+          <Route path="/aboutMe" element={<AboutMe />}></Route>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/hobbies" element={<Hobbies />}></Route>
           <Route path="/curriculum" element={<Curriculum />}></Route>
-          <Route path="/contact" element={<Contact user={usuario} />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>

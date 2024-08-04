@@ -21,7 +21,7 @@ export const dataKnowledges = [
   },
   {
     id: 6,
-    name: "Edicion de videos",
+    name: "Edición de videos",
   },
   {
     id: 7,

@@ -1,8 +1,11 @@
 import { HeaderSubtitle } from "../../General";
 import Service from "./Service";
-import { dataServices } from "../data/dataServices";
+import { useSelector } from "react-redux";
 
 function Services() {
+  const dataUser = useSelector((state) => state.data);
+  const { services } = dataUser;
+
   return (
     <section className="about__services">
       <HeaderSubtitle
@@ -13,7 +16,7 @@ function Services() {
         }
       />
       <div className="services__container">
-        {dataServices.map((service) => (
+        {services.map((service) => (
           <Service
             key={service.id}
             icon={<i className={service.iconClassName}></i>}

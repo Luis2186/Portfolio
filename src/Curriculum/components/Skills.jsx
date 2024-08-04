@@ -5,8 +5,8 @@ function Skills({ skills }) {
     <div className="resume__skills">
       {skills.map((skill) => (
         <Skill
-          key={skill.skill}
-          skill={skill.skill}
+          key={skill.id}
+          skill={skill.name}
           percentage={skill.percentage}
         />
       ))}

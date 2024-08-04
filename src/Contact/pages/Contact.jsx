@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { HeaderTitulo, HeaderSubtitle } from "../../General";
 import { ContactItems, ContactMap, ContactForm } from "../components";
 
-function Contact({ user }) {
+function Contact() {
   useEffect(() => {
     setTimeout(() => {
       document.querySelector("#load-iframe-map").innerHTML = `
@@ -25,7 +25,7 @@ function Contact({ user }) {
     <section className="content__page content__contact">
       <HeaderTitulo title={"Contacto"} />
       <div className="contact__container">
-        <ContactItems user={user} />
+        <ContactItems />
 
         <section className="contact__form-box">
           <ContactMap />

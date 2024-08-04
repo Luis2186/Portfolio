@@ -4,9 +4,12 @@ import UserInfoLinks from "../components/UserInfoLinks";
 import { UserInfo } from "../components/UserInfo";
 import UserInfoButton from "../components/UserInfoButton";
 import UserInfoFooter from "../components/UserInfoFooter";
+import { useSelector } from "react-redux";
 
-function LayoutAside({ user, layoutVisible }) {
-  const { name, job } = user;
+function LayoutAside({ layoutVisible }) {
+  const dataUser = useSelector((state) => state.data);
+  const { firstName, firstSurname, job } = dataUser;
+  const name = firstName + " " + firstSurname;
 
   return (
     <aside
@@ -16,13 +19,13 @@ function LayoutAside({ user, layoutVisible }) {
     >
       <section className="aside__user-info">
         {/* <!-- Informacion General usuario --> */}
-        <UserInfo name={name} job={job} img={perfil} />
+        <UserInfo img={perfil} />
 
         {/* <!-- Menu navegacion --> */}
         <LayoutMenu />
 
         {/* <!-- Links a redes sociales --> */}
-        <UserInfoLinks user={user} />
+        <UserInfoLinks />
 
         {/* <!-- Boton del curriculum --> */}
         <UserInfoButton />
