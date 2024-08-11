@@ -63,9 +63,20 @@ export const dataSlice = createSlice({
     ],
   },
   reducers: {
-    increment: (state /* action */) => {
-      state.counter += 1;
+    setDatosPersonales: (state , action) => {
+        const { firstName, secondName, firstSurname, secondSurname, job, dateOfBirth, cellPhone, email, presentation,location } = action.payload;
+        state.firstName =  firstName,
+        state.secondName = secondName,
+        state.firstSurname = firstSurname ,
+        state.secondSurname =secondSurname ,
+        state.fullName = firstName + secondName +  firstSurname + secondSurname,
+        state.job = job ,
+        state.dateOfBirth = dateOfBirth 
+        state.cellPhone = cellPhone,
+        state.email = email,
+        state.presentation = presentation
+        state.location[0] = location
     },
   },
 });
-export const { increment } = dataSlice.actions;
+export const { setDatosPersonales } = dataSlice.actions;

@@ -1612,3 +1612,78 @@ body{
   .swiper-pagination .swiper-pagination-bullet-active {
     background: var(--color-secondary);
   }
+
+  /* Form Portfolio */
+
+  .form__page{
+    border: 0.3rem solid var(--color-secondary);
+    width: 60%;
+    height: 80vh;
+    min-height: 80vh;
+    margin:10vh auto;
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
+
+  .form_title{
+    width: 100%;
+    
+
+  }
+  .form_content{
+    display: grid;
+    justify-content: center;
+    gap:4rem;
+    grid-template-columns: 40% 40%;
+    grid-template-areas:
+    "col1 col2";
+  }
+
+  .overflow{
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  html {
+    scrollbar-color: var(--color-secondary) var(--color-principal); /* Pulgar y fondo */
+  }
+
+  .fullGrid{
+    grid-column: 1 / -1; /* Ocupa ambas columnas */
+  }
+
+  .form_button_container{
+    width: 100%;
+    display: flex;
+    justify-content: end;   
+  }
+
+  .form_button__btn{
+    display: flex;
+    justify-content: end;
+    background-color: var(--color-secondary);
+    color:var(--color-principal);
+    padding: 1rem 3.5rem;
+    border: 2px solid var(--color-secondary);
+    border-radius: 1.5rem;
+  }
+
+  .form__error{
+    padding:0.5rem;
+    font-size: 1.4rem;
+    color:red;
+  }
+
+  .divider {
+    flex-grow: 1;          /* La línea ocupa el resto del espacio disponible */
+    height: 0.3rem;           /* Altura de la línea */
+    background-color: black; /* Color de la línea */
+    margin-left: 10px;     /* Espacio a la izquierda de la línea */
+  }
+
+  .form__subtitle{
+    margin: 1rem !important;
+  }
