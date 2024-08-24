@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { usuarioEncontrado } from '../../store/portfolio/data/dataSlice';
 
 export const Index = () => {
     const [dimensiones, setDimensiones] = useState({ width: 0, height: 0 });
+    const navigate = useNavigate();
+    const {usuarioLog} = useSelector(state => state.data)
+    const dispatch = useDispatch();
     const contenedorRef = useRef(null);
     const solapaRef = useRef(null);
     const btnRef = useRef(null);
@@ -32,11 +38,16 @@ export const Index = () => {
         };
     }, []);
 
+    const HandleShowCv = () => {
+        const usuario= {usuarioId:1}       
+        navigate(`/user/${usuario.usuarioId}`);
+    }
+
   return (
     <div className="index__page">
         <div className="sobre" ref={contenedorRef}>
            <div className="sobre__solapa" id="triangulo" ref={solapaRef}></div>
-           <button className='sobre__btn' ref={btnRef}> Entrar </button>
+           <button className='sobre__btn' ref={btnRef} onClick={HandleShowCv}> Entrar </button>
            <input
               type="text"
               className="form__input sobre__input"

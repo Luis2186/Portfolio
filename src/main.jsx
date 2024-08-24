@@ -11,9 +11,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   //   <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
-      {/* <Portfolio /> */}
+      <Portfolio />
       {/* <FormPortfolio /> */}
-        <Index />
+        {/* <Index /> */}
     </BrowserRouter>
   </Provider>
   //   {/* </React.StrictMode> */}

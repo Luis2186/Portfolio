@@ -8,6 +8,7 @@ import Hobbies from "../Hobbies/pages/Hobbies";
 import LayoutMenuToogle from "../Home/components/LayoutMenuToogle";
 import Curriculum from "../Curriculum/pages/Curriculum";
 import Contact from "../Contact/pages/Contact";
+import { Index } from "../Home/pages/Index";
 
 export const PortafolioRouter = () => {
   const [layoutVisible, setLayoutVisible] = useState(false);
@@ -27,6 +28,7 @@ export const PortafolioRouter = () => {
           <Route path="/hobbies" element={<Hobbies />}></Route>
           <Route path="/curriculum" element={<Curriculum />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+     
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>

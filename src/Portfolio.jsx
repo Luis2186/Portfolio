@@ -1,13 +1,12 @@
-import { useState } from "react";
-import { PortafolioRouter } from "./router/PortafolioRouter";
-import { FormPortfolio } from "./CreatePortfolio/pages/FormPortfolio";
+
+import { AppRouter } from "./router/AppRouter";
 
 function Portfolio() {
-  return (
+    return (
     <>
-      <div className="layout">
-        <PortafolioRouter />
-      </div>
+        {
+            <AppRouter /> 
+        }
     </>
   );
 }

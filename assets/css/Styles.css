@@ -1757,6 +1757,12 @@ body{
     border-radius: 5rem;
 }
 
+.sobre__btn:hover{
+    background-color: var(--color-secondary);
+    color:var(--color-principal);
+    border: none;
+}
+
 .sobre__input{
     position: absolute;
     width: 300px;
@@ -1788,7 +1794,10 @@ body{
 
 @media (max-width: 500px) {
     .sobre__btn{
+        left:calc(50% - 35px);
         font-size: 1.3rem;
+        height: 70px;
+        width: 70px;
     }
     .sobre__input{   
         width: 200px;

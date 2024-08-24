@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import usuario from "../../../General/LayoutAside/data/dataUsuario";
 
 export const dataSlice = createSlice({
   name: "data",
   initialState: {
+    usuarioId:1,
+    usuarioLog:false,
     firstName: "Luis",
     secondName: "Ignacio",
     firstSurname: "López",
@@ -75,9 +78,12 @@ export const dataSlice = createSlice({
         state.cellPhone = cellPhone,
         state.email = email,
         state.presentation = presentation
-        state.location[0] = location
-        
+        state.location[0] = location       
     },
+    usuarioEncontrado: (state,action) =>{
+        const { usuarioId } = action.payload;
+        state.usuarioLog = state.usuarioId == usuarioId
+    }
   },
 });
-export const { setDatosPersonales } = dataSlice.actions;
+export const { setDatosPersonales ,usuarioEncontrado} = dataSlice.actions;
