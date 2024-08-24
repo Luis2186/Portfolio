@@ -4,7 +4,7 @@ import { useForm } from "../../hooks/useForm";
 import { InputForm } from "../components/InputForm";
 import { TextAreaForm } from "../components/TextAreaForm";
 import { setDatosPersonales } from "../../store/portfolio/data/dataSlice"; 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const DatosPersonales={
     firstName: "",
@@ -22,10 +22,24 @@ const DatosPersonales={
         city:"",
         adress:"",
         zipCode:""
-    } 
+    },
+    // digitalPlataforms: [
+    //     {
+    //       id: 1,
+    //       name: "Linkedin",
+    //       url: "https://www.linkedin.com/in/luis-lopez-perdomo/",
+    //       iconClassName: "fa-brands fa-linkedin social__icon",
+    //     },
+    //     {
+    //       id: 2,
+    //       name: "Instragram",
+    //       url: "https://www.instagram.com/lucho_2186",
+    //       iconClassName: "fa-brands fa-instagram social__icon",
+    //     },
+    //   ], 
 }
 
-const formData ={
+let formData ={
     firstName: "",
     firstSurname: "",
     job: "",
@@ -49,24 +63,34 @@ const formValidations = {
   cellPhone: [(value) => value.length >= 1 , "El telefono celular es requerido"],
   email: [(value) => value.length >= 6, "El correo electronico es requerido"],
   presentation: [(value) => value.length >= 60,"La presentacion debe tener al menos 60 caracteres",],
-  country: [(value) => value.length >= 1,"El pais es requerido",],
+  country: [(value) =>  value.length >= 3,"El pais es requerido",],
   state: [(value) => value.length >= 1,"El departamento es requerido",],
   city: [(value) => value.length >= 1,"La localidad es requerida",],
   adress: [(value) => value.length >= 1,"La direccion es requerida",],
 };
 
 export const FormPortfolio = () => {
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+    var estado = useSelector(status => status.data)
+    const {location:[location]} = estado;
+    formData= {...formData, ...estado}
+    formData.adress= location.adress;
+    formData.country = location.country
+    formData.city =location.city
+    formData.state =location.state
+    formData.zipCode =location.zipCode
+
   const [formSubmited, setFormSubmited] = useState(false);
+
   const {formState, onInputChange,
-         firstName, firstSurname,secondName,secondSurname,job,dateOfBirth,cellPhone,email,presentation,country,state,city,adress,zipCode,
+         firstName, firstSurname,secondName,secondSurname,job,dateOfBirth,cellPhone,email,presentation, country,state, city ,adress, zipCode,
          firstNameValid,firstSurnameValid,dateOfBirthValid,cellPhoneValid,emailValid,presentationValid,countryValid,stateValid,adressValid,cityValid,
-         isFormValid,} = useForm(formData, formValidations);
+         isFormValid,} = useForm(formData,formValidations);
 
   const onSubmit = (event) => {
     event.preventDefault();
     setFormSubmited(true);
-
 
     if (isFormValid) {
         DatosPersonales.firstName = firstName,
@@ -85,6 +109,7 @@ const dispatch = useDispatch();
             adress:adress,
             zipCode:zipCode
         } 
+        console.log(DatosPersonales)
         dispatch(setDatosPersonales(DatosPersonales));
     }
   };

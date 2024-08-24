@@ -76,6 +76,7 @@ export const dataSlice = createSlice({
         state.email = email,
         state.presentation = presentation
         state.location[0] = location
+        
     },
   },
 });

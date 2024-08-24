@@ -19,6 +19,7 @@ export const PortafolioRouter = () => {
   return (
     <>
       <LayoutAside user={usuario} layoutVisible={layoutVisible} />
+
       <main className="layout__content">
         <Routes>
           <Route path="/aboutMe" element={<AboutMe />}></Route>
@@ -30,11 +31,13 @@ export const PortafolioRouter = () => {
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
       </main>
+
       {/* <!-- Menu responsive --> */}
       <LayoutMenuToogle
         onLayoutVisible={onLayoutVisible}
         layoutVisible={layoutVisible}
       />
+      
     </>
   );
 };
