@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { usuarioEncontrado } from '../../store/portfolio/data/dataSlice';
+import { loadUser } from '../../helpers/loadUser';
+import { findUser } from '../../store/portfolio/data/thunks';
 
 export const Index = () => {
     const [dimensiones, setDimensiones] = useState({ width: 0, height: 0 });
@@ -38,9 +40,12 @@ export const Index = () => {
         };
     }, []);
 
-    const HandleShowCv = () => {
-        const usuario= {usuarioId:1}       
+    const HandleShowCv = async () => {
+        const usuario= {usuarioId:1}  
+
+        dispatch(findUser("id-user"))
         navigate(`/user/${usuario.usuarioId}`);
+      
     }
 
   return (

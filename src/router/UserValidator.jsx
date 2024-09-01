@@ -27,14 +27,12 @@ const UserValidator = ({ children }) => {
         if (userExists){
             dispatch(usuarioEncontrado({usuarioId:userId}))
         }
-        
+
         setIsValidUser(userExists);
     };
 
     validateUser();
   }, [userId]);
-
-  
 
   if (isValidUser === null) {
     return <div>Loading...</div>; // O algún tipo de spinner o mensaje de carga

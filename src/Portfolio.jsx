@@ -1,11 +1,13 @@
 
+import { FormPortfolio } from "./CreatePortfolio/pages/FormPortfolio";
 import { AppRouter } from "./router/AppRouter";
 
 function Portfolio() {
     return (
     <>
         {
-            <AppRouter /> 
+            // <AppRouter /> 
+            <FormPortfolio/>
         }
     </>
   );

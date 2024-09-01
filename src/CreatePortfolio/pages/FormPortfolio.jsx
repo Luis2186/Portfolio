@@ -1,118 +1,43 @@
 import { useState } from "react";
-import { HeaderSubtitle, HeaderTitulo } from "../../General";
+import { HeaderTitulo } from "../../General";
 import { useForm } from "../../hooks/useForm";
-import { InputForm } from "../components/InputForm";
-import { TextAreaForm } from "../components/TextAreaForm";
 import { setDatosPersonales } from "../../store/portfolio/data/dataSlice"; 
 import { useDispatch, useSelector } from "react-redux";
+import { DataUser } from "../components/DataUser";
+import { DataLocation } from "../components/DataLocation";
 
-const DatosPersonales={
-    firstName: "",
-    firstSurname: "",
-    job: "",
-    dateOfBirth: "",
-    secondName: "",
-    secondSurname: "",
-    cellPhone: "",
-    email: "",
-    presentation: "",
-    location:{
-        country:"",
-        state:"",
-        city:"",
-        adress:"",
-        zipCode:""
-    },
-    // digitalPlataforms: [
-    //     {
-    //       id: 1,
-    //       name: "Linkedin",
-    //       url: "https://www.linkedin.com/in/luis-lopez-perdomo/",
-    //       iconClassName: "fa-brands fa-linkedin social__icon",
-    //     },
-    //     {
-    //       id: 2,
-    //       name: "Instragram",
-    //       url: "https://www.instagram.com/lucho_2186",
-    //       iconClassName: "fa-brands fa-instagram social__icon",
-    //     },
-    //   ], 
-}
-
-let formData ={
-    firstName: "",
-    firstSurname: "",
-    job: "",
-    dateOfBirth: "",
-    secondName: "",
-    secondSurname: "",
-    cellPhone: "",
-    email: "",
-    presentation: "",
-    country:"",
-    state:"",
-    city:"",
-    adress:"",
-    zipCode:""
-  };
-
-const formValidations = {
-  firstName: [(value) => value.length >= 3, "El nombre es requerido"],
-  firstSurname: [(value) => value.length >= 1, "El Apellido es requerido"],
-  dateOfBirth: [(value) => value.length >= 1,"La fecha de nacimiento es requerida", ],
-  cellPhone: [(value) => value.length >= 1 , "El telefono celular es requerido"],
-  email: [(value) => value.length >= 6, "El correo electronico es requerido"],
-  presentation: [(value) => value.length >= 60,"La presentacion debe tener al menos 60 caracteres",],
-  country: [(value) =>  value.length >= 3,"El pais es requerido",],
-  state: [(value) => value.length >= 1,"El departamento es requerido",],
-  city: [(value) => value.length >= 1,"La localidad es requerida",],
-  adress: [(value) => value.length >= 1,"La direccion es requerida",],
-};
 
 export const FormPortfolio = () => {
     const dispatch = useDispatch();
 
     var estado = useSelector(status => status.data)
-    const {location:[location]} = estado;
-    formData= {...formData, ...estado}
-    formData.adress= location.adress;
-    formData.country = location.country
-    formData.city =location.city
-    formData.state =location.state
-    formData.zipCode =location.zipCode
+    const [dataUserValid, setDataUserValid] = useState(false)
+    const [dataLocationValid, setDataLocationValid] = useState(false)
+    const [dataUser, setDataUser] = useState({...estado})
+    const [formSubmited, setFormSubmited] = useState(false);
 
-  const [formSubmited, setFormSubmited] = useState(false);
+    const onSubmit = (event) => {
+        event.preventDefault();
+        setFormSubmited(true);
+        
+        if (dataLocationValid && dataUserValid) { 
+            dispatch( setDatosPersonales(dataUser) );
+        }
+    };
 
-  const {formState, onInputChange,
-         firstName, firstSurname,secondName,secondSurname,job,dateOfBirth,cellPhone,email,presentation, country,state, city ,adress, zipCode,
-         firstNameValid,firstSurnameValid,dateOfBirthValid,cellPhoneValid,emailValid,presentationValid,countryValid,stateValid,adressValid,cityValid,
-         isFormValid,} = useForm(formData,formValidations);
+    const onHandleDataUser= (data, isFormValid) => {
+        if(!isFormValid) return
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    setFormSubmited(true);
-
-    if (isFormValid) {
-        DatosPersonales.firstName = firstName,
-        DatosPersonales.firstSurname = firstSurname,
-        DatosPersonales.job = job,
-        DatosPersonales.dateOfBirth = dateOfBirth,
-        DatosPersonales.secondName = secondName,
-        DatosPersonales.secondSurname = secondSurname,
-        DatosPersonales.cellPhone = cellPhone,
-        DatosPersonales.email = email,
-        DatosPersonales.presentation = presentation,
-        DatosPersonales.location = {
-            country: country,
-            state:state,
-            city:city,
-            adress:adress,
-            zipCode:zipCode
-        } 
-        console.log(DatosPersonales)
-        dispatch(setDatosPersonales(DatosPersonales));
+        setDataUserValid(isFormValid);
+        setDataUser(prevData=> ({...prevData,...data}));
     }
-  };
+
+    const onHandleDataLocation= (data, isFormValid) => {
+        if(!isFormValid) return
+    
+        setDataLocationValid(isFormValid)
+        setDataUser(prevData=> ({...prevData,location:[{...data}]}));
+    }
 
   return (
     <div className="form__page">
@@ -120,162 +45,11 @@ export const FormPortfolio = () => {
             <div className="form_title">
                 <HeaderTitulo title={<>Creacion de Portafolio</>} />
             </div>
+
             <div className="form_content">
+                <DataUser formSubmited={formSubmited} onHandleDataUser={onHandleDataUser} data={dataUser}/>
 
-            <div className="fullGrid">
-                <HeaderSubtitle subtitle="Datos personales" className="form__subtitle"/>
-                <hr className="divider" />
-            </div>
-
-                <div className="form__col1">
-                    <InputForm
-                        type="text"
-                        name="firstName"
-                        value={firstName}
-                        onChange={onInputChange}
-                        required={true}
-                        placeholder="Primer nombre"
-                        error={!!firstNameValid && formSubmited}
-                        helperText={firstNameValid}
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="firstSurname"
-                        value={firstSurname}
-                        onChange={onInputChange}
-                        placeholder="Primer apellido"
-                        error={!!firstSurnameValid && formSubmited}
-                        helperText={firstSurnameValid}
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="job"
-                        value={job}
-                        onChange={onInputChange}
-                        placeholder="Trabajo"
-                    />
-
-                    <InputForm
-                        type="date"
-                        name="dateOfBirth"
-                        value={dateOfBirth}
-                        onChange={onInputChange}
-                        placeholder="Fecha de nacimiento"
-                        error={!!dateOfBirthValid && formSubmited}
-                        helperText={dateOfBirthValid}
-                    />
-                </div>
-
-                <div className="form__col2">
-                    <InputForm
-                        type="text"
-                        name="secondName"
-                        value={secondName}
-                        onChange={onInputChange}
-                        placeholder="Segundo nombre"
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="secondSurname"
-                        value={secondSurname}
-                        onChange={onInputChange}
-                        placeholder="Segundo apellido"
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="cellPhone"
-                        value={cellPhone}
-                        onChange={onInputChange}
-                        placeholder="Telefono celular"
-                        error={!!cellPhoneValid && formSubmited}
-                        helperText={cellPhoneValid}
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="email"
-                        value={email}
-                        onChange={onInputChange}
-                        placeholder="Correo electronico"
-                        error={!!emailValid && formSubmited}
-                        helperText={emailValid}
-                    />
-                </div>
-                
-                <div className="fullGrid">
-                    <TextAreaForm
-                        name="presentation"
-                        value={presentation}
-                        onChange={onInputChange}
-                        required
-                        placeholder="Presentación"
-                        error={ !!presentationValid && formSubmited}
-                        helperText={presentationValid}
-                    />       
-                </div>
-
-                <div className="fullGrid">
-                    <HeaderSubtitle subtitle="Ubicacion" className="form__subtitle"/>
-                    <hr className="divider" />
-                </div>
-
-                <div className="form__col3">
-                    <InputForm
-                        type="text"
-                        name="country"
-                        value={country}
-                        onChange={onInputChange}
-                        required={true}
-                        placeholder="Pais"
-                        error={!!countryValid && formSubmited}
-                        helperText={countryValid}
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="state"
-                        value={state}
-                        onChange={onInputChange}
-                        placeholder="Departamento"
-                        error={!!stateValid && formSubmited}
-                        helperText={stateValid}
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="city"
-                        value={city}
-                        onChange={onInputChange}
-                        placeholder="Ciudad"
-                        error={!!cityValid && formSubmited}
-                        helperText={cityValid}
-                    />
-                </div>
-
-                <div className="form__col4">
-                    <InputForm
-                        type="text"
-                        name="adress"
-                        value={adress}
-                        onChange={onInputChange}
-                        required={true}
-                        placeholder="Dirección"
-                        error={!!adressValid && formSubmited}
-                        helperText={adressValid}
-                    />
-
-                    <InputForm
-                        type="text"
-                        name="zipCode"
-                        value={zipCode}
-                        onChange={onInputChange}
-                        placeholder="Codigo Postal"
-                    />
-                </div>
+                <DataLocation formSubmited={formSubmited} onHandleDataLocation={onHandleDataLocation} data={dataUser.location[0]}/>
 
                 <div className="fullGrid form_button_container">
                     <button className="form_button__btn"> Siguiente </button>
