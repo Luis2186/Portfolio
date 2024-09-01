@@ -1,5 +1,6 @@
 
 import { FormPortfolio } from "./CreatePortfolio/pages/FormPortfolio";
+import { FormServices } from "./CreatePortfolio/pages/FormServices";
 import { AppRouter } from "./router/AppRouter";
 
 function Portfolio() {
@@ -7,7 +8,8 @@ function Portfolio() {
     <>
         {
             // <AppRouter /> 
-            <FormPortfolio/>
+            // <FormPortfolio/>
+            <FormServices/>
         }
     </>
   );

@@ -1685,6 +1685,10 @@ body{
     margin-left: 10px;     /* Espacio a la izquierda de la línea */
   }
 
+  .divider__services{
+    margin:5rem 0rem;
+  }
+
   .form__subtitle{
     margin: 1rem !important;
   }
@@ -1809,5 +1813,11 @@ body{
         font-size: 1.3rem;
     }   
   }
+
+  .form__services{
+    margin-top: 5rem;
+  }
+
+
 
   /*    SOBRE    */

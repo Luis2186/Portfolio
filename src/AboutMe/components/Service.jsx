@@ -1,6 +1,6 @@
-function Service({ title, description, icon }) {
+function Service({ title, description, icon, onClick }) {
   return (
-    <article className="services__service">
+    <article className="services__service" onClick={onClick}>
       <div className="services_icon service_myicon">{icon}</div>
 
       <div className="services__content">
