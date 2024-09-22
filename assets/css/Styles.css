@@ -1660,6 +1660,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: end;   
+    gap:10px;
   }
 
   .form_button__btn{
@@ -1819,5 +1820,49 @@ body{
   }
 
 
+  /*Pop Over Services*/
 
-  /*    SOBRE    */
+  .popover-container {
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 10px; /* Espacio entre la lupa y el popover */
+  }
+  
+  .icon-container {
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    overflow-y: auto; /* Oculta el contenido que excede la altura */
+    border: 1px solid #ccc; /* Solo para visualizar el contenedor */
+    padding: 10px;
+  }
+
+  .popover__services{
+    height: 300px;
+    width: 300px;
+    overflow: auto;
+  }
+
+    .popover__header{
+        display: flex;
+        justify-content: end;
+        width: 100%;
+    }
+
+    .popover__body{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+  .popover__close{
+    width: 25px;
+    background-color: var(--color-secondary);
+    color:var(--color-principal);
+    border: none;
+    border-radius: 20px;
+    margin:5px;
+    
+  }

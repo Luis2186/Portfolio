@@ -6,6 +6,8 @@ import { InputForm } from "../components/InputForm";
 import { TextAreaForm } from "../components/TextAreaForm";
 import { HeaderTitulo } from "../../General";
 import { addNewService, deleteService, setActiveService } from "../../store/portfolio/data/dataSlice";
+import { IconSelector } from "../components/IconSelector";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const formValidations = {
@@ -26,7 +28,9 @@ export const FormServices = () => {
     const {services,activeService} = useSelector(state =>state.data)
     const [formSubmited, setFormSubmited] = useState(false);
     const dispatch= useDispatch();
+    const [selectedIcon, setSelectedIcon] = useState(null);
     const [selectedService, setSelectedService] = useState(null);
+    const [isPopoverOpen, setPopoverOpen] = useState(false);
     const {formState, onInputChange,
         title, description,iconClassName,
         titleValid,descriptionValid,iconClassNameValid,
@@ -36,8 +40,11 @@ export const FormServices = () => {
         const ultimoId=services.length > 0 ? services[services.length-1].id : 1
         const newDataService= {
             ...formState,
+            iconClassName: "fa-solid " + "fa-" + selectedIcon.iconName,
             id: ultimoId+1  
         }
+        console.log(selectedIcon)
+        console.log(newDataService)
         dispatch(addNewService(newDataService))
     }
 
@@ -48,6 +55,12 @@ export const FormServices = () => {
             onHandleAddNewService();
         }
     };
+
+    const onSelectIcon = (icon) => {
+        setSelectedIcon(icon)
+        setPopoverOpen(false)
+    }
+
 
     const onSelectService = (service) => {
         setSelectedService(service)
@@ -81,7 +94,7 @@ export const FormServices = () => {
                     </div>
 
                     <div className="form__col2">
-                        <InputForm
+                        {/* <InputForm
                             type="text"
                             name="iconClassName"
                             value={iconClassName}
@@ -89,7 +102,41 @@ export const FormServices = () => {
                             placeholder="Icono"
                             error={!!iconClassNameValid && formSubmited}
                             helperText={iconClassNameValid}
-                        />
+                        /> */}
+                        
+                        <div style={{display:"flex", gap:10}}>
+                            <h4>Selecciona un ícono</h4>
+
+                            <i
+                                className="fa-solid fa-magnifying-glass fa-2xl"
+                                onClick={() => setPopoverOpen(!isPopoverOpen)}
+                                style={{ cursor: 'pointer', marginRight: '10px', marginTop:"10px", color:"var(--color-secondary)" }}
+                            />
+                        </div>
+                        
+                        {selectedIcon && (
+                            <div style={{display:"flex", gap:10, marginTop:"20px" ,color:"var(--color-secondary)"}}>
+                                <h4>Ícono seleccionado :</h4>
+                                <FontAwesomeIcon icon={selectedIcon} size="2xl" />
+                            </div>
+                        )}
+
+
+                        {isPopoverOpen && (
+                            <div className="popover-container popover__services">
+                                <div className="popover__header">
+                                    <button className="popover__close" onClick={() => setPopoverOpen(false)} >
+                                        &times;
+                                    </button>
+                                </div>
+                                <div className="popover__body">
+                                    <IconSelector
+                                        onSelect={onSelectIcon}
+                                        onClose={() => setPopoverOpen(false)}
+                                    />
+                                </div>          
+                            </div>
+                        )}
                     </div>
 
                     <div className="fullGrid">
@@ -106,7 +153,7 @@ export const FormServices = () => {
 
                     <div className="fullGrid form_button_container">
                         <button className="form_button__btn" type="button" onClick={onDeleteService}> Borrar </button>
-                        <button className="form_button__btn" type="submit"> Ingresar </button>
+                        <button className="form_button__btn" type="submit"> Guardar </button>
                     </div>
                 </div> 
 
