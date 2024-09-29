@@ -1687,7 +1687,7 @@ body{
   }
 
   .divider__services{
-    margin:5rem 0rem;
+    margin:3rem 0rem;
   }
 
   .form__subtitle{
@@ -1816,7 +1816,7 @@ body{
   }
 
   .form__services{
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 
 
@@ -1865,4 +1865,34 @@ body{
     border-radius: 20px;
     margin:5px;
     
+  }
+
+  .icon{
+    margin-top: 12px;
+    margin-left: 5px;
+  }
+
+  .services__icons{
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+    margin: 0px 5rem;
+  }
+
+  .btnAddIcon{
+    width: 5rem;
+    height: 5rem;
+    background-color: rgb(97, 226, 136);
+    border-radius: 50px;
+    color:white;
+    border-color: transparent;
+  }
+
+  .btnDeleteIcon{
+    width: 5rem;
+    height: 5rem;
+    background-color: rgb(255, 0, 0);
+    border-radius: 5rem;
+    color:white;
+    border-color: transparent;
   }

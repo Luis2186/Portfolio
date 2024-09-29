@@ -80,6 +80,15 @@ export const dataSlice = createSlice({
         console.log(payload)
         state.services.push(payload)
     },
+    onUpdateService: ( state, { payload } ) => {
+        state.services = state.services.map( service => {
+            if ( service.id === payload.id ) {
+                return payload;
+            }
+
+            return service;
+        });
+    },
     deleteService: (state,{payload}) =>{
         if ( state.activeService ) {
             state.services = state.services.filter( service => service.id !== state.activeService.id );
@@ -93,4 +102,4 @@ export const dataSlice = createSlice({
     },
   },
 });
-export const { setDatosPersonales ,usuarioEncontrado,addNewService,setActiveService,deleteService} = dataSlice.actions;
+export const { setDatosPersonales ,usuarioEncontrado,addNewService,onUpdateService,setActiveService,deleteService} = dataSlice.actions;

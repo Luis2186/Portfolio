@@ -5,9 +5,10 @@ import { useForm } from "../../hooks/useForm";
 import { InputForm } from "../components/InputForm";
 import { TextAreaForm } from "../components/TextAreaForm";
 import { HeaderTitulo } from "../../General";
-import { addNewService, deleteService, setActiveService } from "../../store/portfolio/data/dataSlice";
+import { addNewService, deleteService, onUpdateService, setActiveService } from "../../store/portfolio/data/dataSlice";
 import { IconSelector } from "../components/IconSelector";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FabAddNew } from "../components/FabAddNew";
+import { FabDelete } from "../components/FabDelete";
 
 
 const formValidations = {
@@ -15,60 +16,78 @@ const formValidations = {
     description: [(value) => value.length >= 20, "La descripcion es requerida"],
   };
 
-  let formDataService= {
-    id: 1,
-    title: "",
-    description:"",
-    iconClassName: "",
-  }
-
-
 export const FormServices = () => {
-
+    
+    const dispatch= useDispatch();
     const {services,activeService} = useSelector(state =>state.data)
     const [formSubmited, setFormSubmited] = useState(false);
-    const dispatch= useDispatch();
-    const [selectedIcon, setSelectedIcon] = useState(null);
-    const [selectedService, setSelectedService] = useState(null);
+    const [selectedIconClassName, setSelectedIconClassName] = useState(null);
+    const [selectedService, setSelectedService] = useState(activeService);
     const [isPopoverOpen, setPopoverOpen] = useState(false);
+
     const {formState, onInputChange,
         title, description,iconClassName,
         titleValid,descriptionValid,iconClassNameValid,
         isFormValid,} = useForm(activeService,formValidations);
         
-    const onHandleAddNewService=() =>{
-        const ultimoId=services.length > 0 ? services[services.length-1].id : 1
-        const newDataService= {
-            ...formState,
-            iconClassName: "fa-solid " + "fa-" + selectedIcon.iconName,
-            id: ultimoId+1  
-        }
-        console.log(selectedIcon)
-        console.log(newDataService)
-        dispatch(addNewService(newDataService))
+    const onHandleAddNewService=(service) =>{
+        const lastId=services.length > 0 ? services[services.length-1].id : 1
+        service.id= lastId + 1;
+
+        dispatch(addNewService(service))
     }
+
+
+    const startSavingService = (service) =>{
+        
+        if(service.id){
+            onHandleUpdateService(service)
+        } else {
+            onHandleAddNewService(service)
+        }
+    }
+
+    const onHandleUpdateService=(service) =>{
+
+      
+        dispatch(onUpdateService(service))
+
+        // dispatch(addNewService(newDataService))
+    }
+
 
     const onSubmit = (event) => {
         event.preventDefault();
 
         if(isFormValid){
-            onHandleAddNewService();
+
+            const newDataService= {
+                ...formState,
+                iconClassName:  selectedIconClassName,        
+            }
+
+            startSavingService(newDataService);
+            // onHandleAddNewService();
+            //onHandleUpdateService();
         }
     };
 
     const onSelectIcon = (icon) => {
-        setSelectedIcon(icon)
+        setSelectedIconClassName("fa-solid " + "fa-" + icon.iconName,)
         setPopoverOpen(false)
     }
 
 
     const onSelectService = (service) => {
-        setSelectedService(service)
+        // setSelectedService(service)
+        setActiveService(service)
+        setSelectedIconClassName(service.iconClassName)
         dispatch(setActiveService(service))
     }
 
     const onDeleteService = (service) => {
         dispatch(deleteService(service))
+        setSelectedIconClassName("");
     }
 
   return (
@@ -108,16 +127,16 @@ export const FormServices = () => {
                             <h4>Selecciona un ícono</h4>
 
                             <i
-                                className="fa-solid fa-magnifying-glass fa-2xl"
+                                className="fa-solid fa-magnifying-glass fa-2xl icon"
                                 onClick={() => setPopoverOpen(!isPopoverOpen)}
                                 style={{ cursor: 'pointer', marginRight: '10px', marginTop:"10px", color:"var(--color-secondary)" }}
                             />
                         </div>
                         
-                        {selectedIcon && (
+                        {selectedIconClassName && (
                             <div style={{display:"flex", gap:10, marginTop:"20px" ,color:"var(--color-secondary)"}}>
                                 <h4>Ícono seleccionado :</h4>
-                                <FontAwesomeIcon icon={selectedIcon} size="2xl" />
+                                <i className={`${selectedIconClassName} fa-2xl icon`} />
                             </div>
                         )}
 
@@ -152,12 +171,17 @@ export const FormServices = () => {
                     </div> 
 
                     <div className="fullGrid form_button_container">
-                        <button className="form_button__btn" type="button" onClick={onDeleteService}> Borrar </button>
+                        {/* <button className="form_button__btn" type="button" onClick={onDeleteService}> Borrar </button> */}
                         <button className="form_button__btn" type="submit"> Guardar </button>
                     </div>
                 </div> 
 
                 <hr className="divider divider__services" />
+
+                <div className="services__icons">
+                    <FabAddNew setSelectedIconClassName={setSelectedIconClassName} />
+                    <FabDelete hasEventSelected={activeService.id} onDeleteService={onDeleteService} />
+                </div>
 
                 <div className="services__container form__services">
                     {services.map((service) => (
@@ -170,7 +194,7 @@ export const FormServices = () => {
                     />
                     ))}
                 </div>
-            </form>
+            </form>         
 
 
         </div>
